@@ -5,6 +5,7 @@
   import { Checkbox } from "./components/ui/checkbox";
   import { Button } from './components/ui/button'; 
   import { Input } from './components/ui/input'; 
+  import { API_BASE_URL } from './url'; 
 
   export default function Login() {   
     const [correo, setEmail] = useState('');   
@@ -18,7 +19,7 @@
       const loginData = { correo, clave };      
       
       try {       
-        const response = await fetch('http://192.168.128.190/cafe/backend-itca-laravel/public/api/login', {         
+        const response = await fetch(`${API_BASE_URL}login`, {
           method: 'POST',         
           headers: { 'Content-Type': 'application/json' },         
           body: JSON.stringify(loginData),       
@@ -35,7 +36,7 @@
           if(data.tipo_usuario == 1){
             navegar("./Menus/Menuadmin");
           }
-          else if(data.tipo_usuario == 1){
+          else if(data.tipo_usuario == 2){
             navegar("./Menus/Menuuser");
           }
           

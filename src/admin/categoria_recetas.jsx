@@ -16,7 +16,7 @@ const Categoria_recetas = () => {
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/cate_recetas');
+        const response = await fetch(`${API_BASE_URL}cate_recetas`);
         const data = await response.json();
         // Asignamos el array de categorías al estado
         setCategorias(data.categoria_recetas);

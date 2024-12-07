@@ -34,10 +34,10 @@
           alert('Inicio de sesión exitoso'); 
 
           if(data.tipo_usuario == 1){
-            navegar("./Menus/Menuadmin");
+            navegar("./admin");
           }
           else if(data.tipo_usuario == 2){
-            navegar("./Menus/Menuuser");
+            navegar("./menus/Menuuser");
           }
           
         }     

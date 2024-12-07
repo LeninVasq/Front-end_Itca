@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { FaBook } from 'react-icons/fa';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { API_BASE_URL } from '../url'; 
 
 const Categoria_recetas = () => {
   // Estado para almacenar las categorías obtenidas desde la API
@@ -11,6 +12,8 @@ const Categoria_recetas = () => {
   const [currentPage, setCurrentPage] = useState(0); // Página actual
   const [categoriasPorPagina, setCategoriasPorPagina] = useState(9); // Número de categorías por página
   const [searchTerm, setSearchTerm] = useState(""); // Término de búsqueda
+
+
 
   // useEffect para hacer la petición a la API y obtener las categorías
   useEffect(() => {
@@ -40,7 +43,7 @@ const Categoria_recetas = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container">
       <h1 className="mb-4 text-center">Listado de Categorías</h1>
 
       {/* Barra de búsqueda */}

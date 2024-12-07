@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 // Importando rutas
 import Login from './login-form';
@@ -13,7 +13,7 @@ import Categoria_recetas from './admin/categoria_recetas';
 import Menuuser from './Menus/Menuuser';
 import Menuadmin from './Menus/Menuadmin';
 
-// Importando rutas de controles
+// Importando estilos de Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
@@ -21,24 +21,28 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Ruta principal - Login */}
-        <Route path="/" element={<Login />} />
         
+
         {/* Ruta de login */}
-        <Route path="/loginForm" element={<Login />} />
-        
-        {/* Ruta de registro */}
+        <Route path="/" element={<Login />} />
+
+        {/* Ruta para registro */}
         <Route path="/register-form" element={<Register />} />
 
-        {/* Ruta para el menú admin */}
-        <Route path="/menus/Menuadmin" element={<Menuadmin />} />
-        
-        {/* Ruta para el menú de usuario */}
-        <Route path="/menus/Menuuser" element={<Menuuser />} />
+        {/* Rutas anidadas para el administrador */}
+        <Route path="/admin" element={<Menuadmin />}>
+          {/* Subrutas del administrador */}
+          <Route path="categoria_recetas" element={<Categoria_recetas />} />
+          <Route path="register-form" element={<Register />} />
 
-        {/* Ruta para categorías */}
-        <Route path="/admin/categoria_recetas" element={<Categoria_recetas />} />
+        </Route>
 
+        {/* Rutas anidadas para el usuario */}
+        <Route path="/menus/Menuuser" element={<Menuuser />}>
+          {/* Aquí puedes añadir más subrutas específicas del usuario */}
+          <Route path="categoria_recetas" element={<Categoria_recetas />} />
+          
+        </Route>
       </Routes>
     </Router>
   );
